@@ -6,7 +6,7 @@ var PlayerService = {
 
         return response.team_id;
     },
-    getPlayers: ( teamId ) => {
+    getPlayers: async ( teamId ) => {
         let response = await $.ajax({
             url: "/team/" + teamId + "/player",
         });
