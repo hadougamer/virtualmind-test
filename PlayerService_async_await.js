@@ -17,23 +17,12 @@ var PlayerService = {
 
 var PlayerDetailsController = {
     playerId: 8,
-    showTeammatesClick: function() {
+    showTeammatesClick: async function() {
         try {
-            PlayerService.getPlayerTeamId( this.playerId )
-            .then((team_id) =>{
-                PlayerService.getPlayers(team_id)
-                .then((players) => {
-                    // Render Players
-                    console.log(players);
-                }).catch((error) => {
-                    console.log(error);
-                    throw new Error("Error on get players");
-                })
-            })
-            .catch((error) => {
-                console.log(error);
-                throw new Error("Error on load Team");
-            });
+            let team_id = await PlayerService.getPlayerTeamId( this.playerId );
+            let players = await PlayerService.getPlayers(team_id);
+            
+            console.log( players );
         } catch( error ) {
             console.log(error);
         }
