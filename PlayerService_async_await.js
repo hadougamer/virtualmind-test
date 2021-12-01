@@ -4,7 +4,7 @@ var PlayerService = {
             url: "/player/" + playerId + "/team"
         });
 
-        return response;
+        return response.team_id;
     },
     getPlayers: ( teamId ) => {
         let response = await $.ajax({
